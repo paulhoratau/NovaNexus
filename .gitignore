@@ -1,0 +1,42 @@
+# Virtualenv
+novanexusenv
+
+# Python files
+*.py[cod]
+__pycache__/
+*.pyo
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+*.env
+
+# Database
+db.sqlite3
+*.db
+
+# Migrations
+*/migrations/*
+
+# Media
+/media/
+
+# Static files
+/staticfiles/
+*.static.*
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# Other
+*.swp
+*.swo
