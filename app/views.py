@@ -1,15 +1,11 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as auth_login
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib import messages
-from django.shortcuts import render, redirect
+from .forms import CreateUserForm
 from django.http import HttpResponse
+
 
 # Create your views here.
 
@@ -36,15 +32,16 @@ def login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 auth_login(request, user)
+                messages.info(request, f'You are now logged in as {username}.')
             else:
-                messages.info(request, 'Username or password is incorrect!')
-                return render(request, 'novanexus/login.html', {'form': form})
+                messages.error(request, 'Invalid username or password.')
         else:
-            return HttpResponse("Your data is not valid")
+            messages.error(request, 'Invalid username or password.')
     else:
         form = AuthenticationForm()
     return render(request, 'novanexus/login.html', {'form': form})
 
 def logoutUser(request):
     logout(request)
+    messages.info(request, 'You have successfully logged out.')
     return redirect('login')
