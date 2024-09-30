@@ -2,6 +2,8 @@
 
 <html>
 <head>
+    {% block head %}
+    {% endblock %}
     <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -31,7 +33,7 @@
               </li>
               {% else %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Log-Out</a>
+                <a class="nav-link" href="{% url 'logout' %}">Log out</a>
               </li>
 
 

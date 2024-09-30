@@ -45,3 +45,6 @@ def logoutUser(request):
     logout(request)
     messages.info(request, 'You have successfully logged out.')
     return redirect('login')
+
+def dashboard(request):
+    return render(request, 'novanexus/dashboard.html')
